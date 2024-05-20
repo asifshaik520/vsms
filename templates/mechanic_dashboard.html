@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanic Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/free-photo/car-accessories-with-copy-space_23-2149030400.jpg?w=1380&t=st=1715328364~exp=1715328964~hmac=9f54338ed2799022f4beaa389621378e296515c4adbf0e53f50d593ac055aec3');
+            /* box-sizing: border-box; */
+            /* background-image: url('https://img.freepik.com/free-vector/abstract-digital-grid-vector-black-background_53876-111550.jpg'); Add your background image path here */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Change text color for better visibility */
+        }
+        .container {
+            
+            width: 80%;
+            margin: 20px auto;
+            
+            /* margin-left: 40%; */
+            background-color: rgba(19, 7, 7, 0.1); /* Adjust background color opacity */
+            padding: 60px;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 2%;
+        }
+        .mechanic-info {
+            margin-bottom: 40px;
+        }
+        .mechanic-info label {
+            margin-bottom: 2%;
+            margin-right: 10%;
+            margin-left: 38%;
+            font-weight: bold;
+            display: inline-block;
+            width: 150px; /* Adjust label width as needed */
+        }
+        .mechanic-info p {
+            
+            margin: 5px;
+            display: inline-block;
+            width: calc 150px; /* Adjust width to fit remaining space after label */
+            vertical-align: top;
+            margin-left: 60%;
+            margin-bottom: 10%;
+        }
+        .logout-btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff; /* Button color */
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        .logout-btn:hover {
+            background-color: #e2e8ed; /* Button hover color */
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+
+<div class="container">
+    <h2>Mechanic Dashboard</h2>
+    <div class="mechanic-info">
+        {% for request in view %}
+            <label for="mechanic_id">Mechanic ID:</label>
+            {{ request[0] }}<br>
+
+            <label for="name">Name:</label>
+            {{ request[1] }}<br>
+
+            <label for="email">Mechanic Email:</label>
+            {{ request[3] }}<br>
+
+            <label for="phone_number">Mechanic Phone Number:</label>
+            {{ request[4] }}<br>
+
+            <label for="address">Address:</label>
+            {{ request[5] }}<br>
+
+            <label for="skills">Skills:</label>
+            {{ request[6] }}<br>
+
+            <label for="status">Status:</label>
+            {{ request[7] }}<br>
+        {% endfor %}
+    </div>
+    <a href="{{url_for('mlogout')}}" class="logout-btn">Logout</a>
+</div>
+
+</body>
+</html>

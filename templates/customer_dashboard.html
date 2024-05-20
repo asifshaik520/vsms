@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            /* background-image: url('https://img.freepik.com/free-photo/still-life-arrangement-friendship-day_23-2148970498.jpg?w=1380&t=st=1715325815~exp=1715326415~hmac=25cbc25ffc62215945c5be467c87d5f04a8976a048d328b020119ac00d4aa11b'); */
+            /* background-image: url('https://t3.ftcdn.net/jpg/00/21/70/82/240_F_21708280_RFKz4O7ImQluB9FgX2mUYFUNDmlLokX6.jpg'); */
+            background-image: url('https://img.freepik.com/free-photo/car-dealer-signing-papers_23-2148332939.jpg?t=st=1715418416~exp=1715422016~hmac=f52328f12f4919e7cd0a2b37a240ee04788abefd0a09676bef8bb88468d02ab1&w=996');
+            background-size: cover;
+
+            background-repeat: no-repeat;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(21, 16, 16, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .btn-group {
+            margin-bottom: 20px;
+        }
+        /* Style for navbar */
+        .navbar {
+            background-color: #f3f3f36c; /* Dark background color */  
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #fff; /* White text color */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffc107; /* Yellow on hover */
+        }
+        /* Flash message style */
+        .center b {
+            color: red; /* Change flash message color if needed */
+        }
+        .nav-link:hover(){
+            text-decoration: underline;
+        }
+    </style>
+</head>
+   <!-- Flash message code remains unchanged -->
+   {% with messages = get_flashed_messages() %}
+   {% if messages %}
+       {% for message in messages %}
+           <center><b>{{ message }}</b></center>
+       {% endfor %}
+   {% endif %}
+{% endwith %}
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Customer service</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('service_request')}}">Ask service request</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('view_requests')}}">View requests</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('clogout')}}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+</body>
+</html>
